@@ -98,11 +98,293 @@
             border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
-        .game-iframe {
+        .game-launch-area {
+            padding: 0;
+        }
+
+        .game-preview-large {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: white;
+            padding: 40px;
+            position: relative;
+        }
+
+        .game-screen {
+            background: #0f0f23;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            position: relative;
+            min-height: 300px;
+            border: 2px solid #333;
+            overflow: hidden;
+        }
+
+        .game-world {
+            position: relative;
             width: 100%;
-            height: 600px;
+            height: 250px;
+        }
+
+        .hero-character {
+            position: absolute;
+            font-size: 2.5rem;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        .monster {
+            position: absolute;
+            font-size: 2rem;
+            animation: monsterMove 3s linear infinite;
+        }
+
+        .monster-1 {
+            left: 10%;
+            top: 20%;
+            animation-delay: 0s;
+        }
+
+        .monster-2 {
+            right: 15%;
+            top: 30%;
+            animation-delay: -1s;
+        }
+
+        .monster-3 {
+            left: 20%;
+            bottom: 20%;
+            animation-delay: -2s;
+        }
+
+        .powerup {
+            position: absolute;
+            right: 10%;
+            bottom: 10%;
+            font-size: 1.5rem;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        .weapon-effect {
+            position: absolute;
+            left: 45%;
+            top: 35%;
+            font-size: 1.5rem;
+            animation: explosion 1s ease-out infinite;
+        }
+
+        .game-ui {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .health-bar {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 8px 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 120px;
+        }
+
+        .health-fill {
+            width: 60px;
+            height: 6px;
+            background: linear-gradient(90deg, #ff4444, #ff8888);
+            border-radius: 3px;
+        }
+
+        .game-info {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 8px;
+            padding: 8px 12px;
+            text-align: right;
+            font-size: 0.9rem;
+        }
+
+        .game-info div {
+            margin: 2px 0;
+        }
+
+        .launch-controls {
+            text-align: center;
+        }
+
+        .launch-controls h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .launch-controls p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 25px;
+        }
+
+        .play-options {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 25px 0;
+        }
+
+        .play-button.primary {
+            background: linear-gradient(135deg, #00c851, #007e33);
+            font-size: 1.2rem;
+            padding: 15px 30px;
+            box-shadow: 0 5px 15px rgba(0, 200, 81, 0.3);
+        }
+
+        .play-button.secondary {
+            background: linear-gradient(135deg, #007aff, #5856d6);
+            padding: 12px 25px;
+        }
+
+        .game-features-quick {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .feature-badge {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .demo-game {
+            background: #f8f9fa;
+            padding: 20px;
+            border-top: 2px solid #e9ecef;
+        }
+
+        .demo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .close-demo {
+            background: #ff4757;
+            color: white;
             border: none;
-            display: block;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .demo-arena {
+            background: #2c3e50;
+            border-radius: 8px;
+            height: 200px;
+            position: relative;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .demo-player {
+            position: absolute;
+            font-size: 2rem;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.1s ease;
+            z-index: 10;
+        }
+
+        .demo-monster {
+            position: absolute;
+            font-size: 1.5rem;
+            transition: all 0.5s ease;
+        }
+
+        .demo-controls {
+            text-align: center;
+            color: #6c757d;
+        }
+
+        .demo-stats {
+            margin-top: 10px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        @keyframes monsterMove {
+            0% { transform: translateX(0) rotate(0deg); }
+            25% { transform: translateX(20px) rotate(90deg); }
+            50% { transform: translateX(0) rotate(180deg); }
+            75% { transform: translateX(-20px) rotate(270deg); }
+            100% { transform: translateX(0) rotate(360deg); }
+        }
+
+        @keyframes explosion {
+            0% { transform: scale(1) rotate(0deg); opacity: 1; }
+            50% { transform: scale(1.3) rotate(180deg); opacity: 0.8; }
+            100% { transform: scale(1) rotate(360deg); opacity: 1; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .game-preview-large {
+                padding: 25px;
+            }
+
+            .game-screen {
+                min-height: 250px;
+            }
+
+            .hero-character {
+                font-size: 2rem;
+            }
+
+            .monster {
+                font-size: 1.5rem;
+            }
+
+            .play-options {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .game-features-quick {
+                flex-direction: column;
+            }
+
+            .game-ui {
+                flex-direction: column;
+                gap: 10px;
+            }
         }
 
         .content-section {
@@ -293,6 +575,114 @@
             color: #6c757d;
         }
 
+        .game-error {
+            text-align: center;
+            padding: 40px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            margin: 20px;
+        }
+
+        .game-error h3 {
+            color: #007aff;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .game-options {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 25px 0;
+        }
+
+        .demo-game-area {
+            margin-top: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            color: white;
+        }
+
+        .game-preview {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 15px;
+        }
+
+        .preview-screen {
+            background: #1a1a2e;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            position: relative;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .monster-icon, .hero-icon {
+            font-size: 3rem;
+            position: absolute;
+            animation: float 2s ease-in-out infinite alternate;
+        }
+
+        .monster-icon {
+            left: 20px;
+            top: 20px;
+        }
+
+        .hero-icon {
+            right: 30px;
+            bottom: 20px;
+        }
+
+        .game-stats {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            text-align: right;
+            font-size: 0.9rem;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        .game-stats div {
+            margin: 3px 0;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-10px); }
+        }
+
+        .game-error ul {
+            text-align: left;
+            display: inline-block;
+            margin: 20px 0;
+        }
+
+        .game-error li {
+            margin: 8px 0;
+            color: #6c757d;
+        }
+
+        @media (max-width: 768px) {
+            .game-options {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .monster-icon, .hero-icon {
+                font-size: 2rem;
+            }
+        }
+
         /* Smooth Scrolling */
         html {
             scroll-behavior: smooth;
@@ -327,12 +717,70 @@
 
         <div class="container">
             <div class="game-container" id="game">
-                <iframe 
-                    src="https://cloud.onlinegames.io/games/2025/unity/monster-survivors/index-0g.html" 
-                    class="game-iframe"
-                    title="Monster Survivors Game"
-                    allowfullscreen>
-                </iframe>
+                <div class="game-launch-area">
+                    <div class="game-preview-large">
+                        <div class="game-screen">
+                            <div class="game-world">
+                                <div class="hero-character">🦸‍♂️</div>
+                                <div class="monster monster-1">👾</div>
+                                <div class="monster monster-2">🧟</div>
+                                <div class="monster monster-3">👹</div>
+                                <div class="powerup">⚡</div>
+                                <div class="weapon-effect">💥</div>
+                            </div>
+                            <div class="game-ui">
+                                <div class="health-bar">
+                                    <div class="health-fill"></div>
+                                    <span>❤️ 100/100</span>
+                                </div>
+                                <div class="game-info">
+                                    <div>🌊 Wave: 15</div>
+                                    <div>⭐ Score: 8,420</div>
+                                    <div>⏱️ Time: 05:23</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="launch-controls">
+                            <h3>🎮 Ready to Play Monster Survivors?</h3>
+                            <p>Experience the ultimate survival challenge with endless waves of monsters!</p>
+                            
+                            <div class="play-options">
+                                <a href="https://cloud.onlinegames.io/games/2025/unity/monster-survivors/" target="_blank" class="play-button primary">
+                                    🚀 Play Full Game
+                                </a>
+                                <button onclick="startDemo()" class="play-button secondary" id="demo-btn">
+                                    🎯 Try Demo
+                                </button>
+                            </div>
+                            
+                            <div class="game-features-quick">
+                                <div class="feature-badge">⚔️ Real-time Combat</div>
+                                <div class="feature-badge">📈 Progressive Upgrades</div>
+                                <div class="feature-badge">🎯 Strategic Gameplay</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="demo-game" id="demo-game" style="display: none;">
+                        <div class="demo-header">
+                            <h4>🎮 Interactive Demo</h4>
+                            <button onclick="stopDemo()" class="close-demo">✕</button>
+                        </div>
+                        <div class="demo-arena">
+                            <div class="demo-player" id="demo-player">🦸‍♂️</div>
+                            <div class="demo-monster" id="demo-monster-1">👾</div>
+                            <div class="demo-monster" id="demo-monster-2">🧟</div>
+                        </div>
+                        <div class="demo-controls">
+                            <p>Use WASD or Arrow Keys to move!</p>
+                            <div class="demo-stats">
+                                <span>Score: <span id="demo-score">0</span></span>
+                                <span>Time: <span id="demo-time">0</span>s</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <section class="content-section">
@@ -414,18 +862,176 @@
             });
         });
 
-        // Add loading state for iframe
-        const iframe = document.querySelector('.game-iframe');
-        const gameContainer = document.querySelector('.game-container');
-        
-        iframe.addEventListener('load', function() {
-            gameContainer.style.opacity = '1';
-        });
+        // Game demo functionality
+        let demoActive = false;
+        let demoScore = 0;
+        let demoTime = 0;
+        let demoInterval;
+        let demoPlayer = null;
+        let demoMonsters = [];
+        let playerPos = { x: 50, y: 50 };
+        let keys = {};
 
-        // Add error handling for iframe
-        iframe.addEventListener('error', function() {
-            console.error('Game failed to load');
-        });
+        function startDemo() {
+            const demoGame = document.getElementById('demo-game');
+            const demoBtn = document.getElementById('demo-btn');
+            
+            demoGame.style.display = 'block';
+            demoBtn.textContent = '🎮 Demo Running...';
+            demoBtn.disabled = true;
+            
+            demoActive = true;
+            demoScore = 0;
+            demoTime = 0;
+            
+            initDemo();
+            demoInterval = setInterval(updateDemo, 100);
+            
+            // Scroll to demo
+            demoGame.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function stopDemo() {
+            const demoGame = document.getElementById('demo-game');
+            const demoBtn = document.getElementById('demo-btn');
+            
+            demoGame.style.display = 'none';
+            demoBtn.textContent = '🎯 Try Demo';
+            demoBtn.disabled = false;
+            
+            demoActive = false;
+            clearInterval(demoInterval);
+            
+            // Remove event listeners
+            document.removeEventListener('keydown', handleKeyDown);
+            document.removeEventListener('keyup', handleKeyUp);
+        }
+
+        function initDemo() {
+            demoPlayer = document.getElementById('demo-player');
+            demoMonsters = [
+                document.getElementById('demo-monster-1'),
+                document.getElementById('demo-monster-2')
+            ];
+            
+            // Reset positions
+            playerPos = { x: 50, y: 50 };
+            updatePlayerPosition();
+            
+            // Set initial monster positions
+            demoMonsters[0].style.left = '10%';
+            demoMonsters[0].style.top = '20%';
+            demoMonsters[1].style.right = '10%';
+            demoMonsters[1].style.bottom = '20%';
+            
+            // Add keyboard listeners
+            document.addEventListener('keydown', handleKeyDown);
+            document.addEventListener('keyup', handleKeyUp);
+        }
+
+        function handleKeyDown(e) {
+            if (!demoActive) return;
+            keys[e.key.toLowerCase()] = true;
+            e.preventDefault();
+        }
+
+        function handleKeyUp(e) {
+            if (!demoActive) return;
+            keys[e.key.toLowerCase()] = false;
+            e.preventDefault();
+        }
+
+        function updateDemo() {
+            if (!demoActive) return;
+            
+            // Update time and score
+            demoTime += 0.1;
+            document.getElementById('demo-time').textContent = Math.floor(demoTime);
+            
+            // Handle player movement
+            if (keys['w'] || keys['arrowup']) {
+                playerPos.y = Math.max(5, playerPos.y - 2);
+            }
+            if (keys['s'] || keys['arrowdown']) {
+                playerPos.y = Math.min(90, playerPos.y + 2);
+            }
+            if (keys['a'] || keys['arrowleft']) {
+                playerPos.x = Math.max(5, playerPos.x - 2);
+            }
+            if (keys['d'] || keys['arrowright']) {
+                playerPos.x = Math.min(90, playerPos.x + 2);
+            }
+            
+            updatePlayerPosition();
+            
+            // Simple AI for monsters
+            moveMonsters();
+            
+            // Check collisions and update score
+            checkCollisions();
+        }
+
+        function updatePlayerPosition() {
+            if (demoPlayer) {
+                demoPlayer.style.left = playerPos.x + '%';
+                demoPlayer.style.top = playerPos.y + '%';
+            }
+        }
+
+        function moveMonsters() {
+            demoMonsters.forEach((monster, index) => {
+                if (!monster) return;
+                
+                // Simple movement toward player
+                const rect = monster.getBoundingClientRect();
+                const arena = monster.parentElement.getBoundingClientRect();
+                
+                if (Math.random() < 0.3) { // 30% chance to move each update
+                    const currentX = parseFloat(monster.style.left || '50') / 100;
+                    const currentY = parseFloat(monster.style.top || '50') / 100;
+                    
+                    let newX = currentX;
+                    let newY = currentY;
+                    
+                    // Move toward player
+                    if (currentX < playerPos.x / 100) newX += 0.01;
+                    if (currentX > playerPos.x / 100) newX -= 0.01;
+                    if (currentY < playerPos.y / 100) newY += 0.01;
+                    if (currentY > playerPos.y / 100) newY -= 0.01;
+                    
+                    monster.style.left = Math.max(0, Math.min(90, newX * 100)) + '%';
+                    monster.style.top = Math.max(0, Math.min(90, newY * 100)) + '%';
+                }
+            });
+        }
+
+        function checkCollisions() {
+            // Simple distance check
+            const playerRect = demoPlayer.getBoundingClientRect();
+            
+            demoMonsters.forEach((monster) => {
+                if (!monster) return;
+                
+                const monsterRect = monster.getBoundingClientRect();
+                const distance = Math.sqrt(
+                    Math.pow(playerRect.left - monsterRect.left, 2) + 
+                    Math.pow(playerRect.top - monsterRect.top, 2)
+                );
+                
+                if (distance < 50) { // Collision!
+                    demoScore += 10;
+                    document.getElementById('demo-score').textContent = demoScore;
+                    
+                    // Reset monster position
+                    monster.style.left = (Math.random() * 80 + 10) + '%';
+                    monster.style.top = (Math.random() * 80 + 10) + '%';
+                }
+            });
+        }
+
+        // Make functions global
+        window.startDemo = startDemo;
+        window.stopDemo = stopDemo;
     </script>
 </body>
 </html>
